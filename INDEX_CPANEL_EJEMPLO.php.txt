@@ -1,0 +1,5 @@
+En public_html/cloudbiz/index.php sustituye estas tres rutas por las de tu cuenta:
+__DIR__.'/../storage/framework/maintenance.php' -> '/home/TU_USUARIO/cloudbiz_app/storage/framework/maintenance.php'
+__DIR__.'/../vendor/autoload.php' -> '/home/TU_USUARIO/cloudbiz_app/vendor/autoload.php'
+__DIR__.'/../bootstrap/app.php' -> '/home/TU_USUARIO/cloudbiz_app/bootstrap/app.php'
+NO publiques el directorio vendor ni el archivo .env.

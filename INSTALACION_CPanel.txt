@@ -1,0 +1,15 @@
+CLOUDBIZ MYPES - INSTALACIÓN EN CPANEL
+======================================
+IMPORTANTE: respaldar el sitio y la base de datos antes de reemplazar nada.
+
+1. Descomprimir el ZIP. El directorio cloudbiz/ contiene el proyecto Laravel, incluido vendor/.
+2. Subir el contenido del proyecto a una carpeta PRIVADA, por ejemplo /home/USUARIO/cloudbiz_app (fuera de public_html).
+3. Copiar el contenido de cloudbiz/public/ a /home/USUARIO/public_html/cloudbiz/ (incluyendo build/ y .htaccess).
+4. Editar public_html/cloudbiz/index.php para apuntar al proyecto privado: rutas ../vendor/autoload.php y ../bootstrap/app.php deben cambiarse por las rutas absolutas reales del proyecto (por ejemplo /home/USUARIO/cloudbiz_app/vendor/autoload.php y /home/USUARIO/cloudbiz_app/bootstrap/app.php). No cambiar nada más.
+5. Crear .env en cloudbiz_app a partir de .env.example; definir APP_KEY NUEVA, APP_ENV=production, APP_DEBUG=false, APP_URL=https://TU-DOMINIO/cloudbiz, ASSET_URL=https://TU-DOMINIO/cloudbiz, DB_*, SESSION_SECURE_COOKIE=true, SESSION_PATH=/cloudbiz.
+6. Crear la base de datos MySQL vacía y ejecutar: php artisan migrate --force (desde cloudbiz_app). Si reutilizas una base de datos antigua, hacer copia de seguridad y revisar migraciones antes; NO usar migrate:fresh.
+7. En SSH/Terminal cPanel: php artisan storage:link (si el enlace apunta al lugar incorrecto, enlazar public_html/cloudbiz/storage a cloudbiz_app/storage/app/public), php artisan optimize:clear y php artisan config:cache.
+8. Verificar acceso /cloudbiz/login, registrar empresa, crear categoría, producto con imagen, cliente, pedido y abrir /cloudbiz/tienda/SLUG.
+9. Si no tienes terminal o permisos para enlaces simbólicos, pide al hosting configurar document root a cloudbiz_app/public o ayudar con el enlace storage.
+10. El ZIP incluye código y dependencias PHP, NO datos de producción, credenciales, ni fotografías de productos de terceros. Hay una ilustración SVG de reemplazo; las fotografías se suben desde Productos.
+NOTA: Esta versión se compila y valida estáticamente aquí, pero requiere pruebas funcionales en tu hosting antes de considerarse producción.

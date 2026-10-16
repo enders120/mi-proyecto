@@ -1,0 +1,11 @@
+CLOUDBIZ - PAQUETE PRODUCTOS Y CATEGORIAS
+
+1. Haz una copia de seguridad del proyecto y de la base de datos cloudbiz.
+2. Copia las carpetas app, resources y routes a la raiz de tu proyecto.
+3. Este paquete NO contiene cambios de esquema ni migraciones: utiliza tus tablas existentes.
+4. Conserva tus AuthController, DashboardController, vistas de login, registro y dashboard.
+5. Requiere que resources/js/app.js inicialice Alpine.js para el menu y los editores.
+6. Ejecuta composer dump-autoload, php artisan optimize:clear y php artisan storage:link (solo si falta).
+7. Ejecuta php artisan route:list y php artisan serve.
+8. No ejecutes migrate:fresh.
+9. Clientes, pedidos y reportes no se implementan en este paquete: quedan indicados como proximamente.

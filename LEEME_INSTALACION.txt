@@ -1,0 +1,30 @@
+CLOUDBIZ - PROYECTO LARAVEL RECUPERADO
+
+Se ha empaquetado el codigo recibido en cloudbiz.rar y la base de datos cloudbiz.sql.
+Se agrego package.json, ausente en el RAR, usando las dependencias de package-lock.json.
+Se configuro .env.example para MySQL cloudbiz; NO se incluye el archivo .env privado.
+
+INSTALACION EN WINDOWS / XAMPP
+1. Extraer el ZIP en C:\Users\User\Documents\cloudbiz (hacer antes una copia de la carpeta original).
+2. Crear una base de datos vacia llamada cloudbiz en phpMyAdmin e importar database/cloudbiz_backup.sql.
+   NO importar encima de tablas existentes sin respaldo: podria producir conflictos.
+3. En PowerShell, dentro de cloudbiz:
+   composer install
+   Copy-Item .env.example .env
+   php artisan key:generate
+   npm install
+   npm run build
+   php artisan storage:link
+   php artisan optimize:clear
+   php artisan serve
+4. Abrir http://127.0.0.1:8000
+5. Revisar .env: usuario, contrasena y puerto MySQL deben coincidir con XAMPP.
+6. Si usas la copia SQL proporcionada, NO ejecutar migrate:fresh, pues borra los datos.
+
+ESTADO Y LIMITACIONES
+- Se reviso la sintaxis de los archivos PHP con php -l; no hubo errores de sintaxis.
+- No se pudo ejecutar el sistema completo contra MySQL, Composer y Vite en este entorno.
+- La copia SQL incluye un usuario administrador con hash de contrasena; se recomienda cambiar su clave al restaurar.
+- Las fotografias guardadas en storage/app/public no estaban en el RAR; el registro del producto se conserva, pero su imagen puede faltar.
+- Clientes y pedidos tienen tablas en SQL pero las pantallas no estan implementadas en el codigo recibido.
+- En el respaldo SQL hay dos categorias llamadas Abarrotes; se preservaron para no borrar datos.

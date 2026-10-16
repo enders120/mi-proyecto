@@ -1,0 +1,20 @@
+CLOUDBIZ - MODULOS CLIENTES, PEDIDOS Y DASHBOARD
+
+Esta versión agrega gestión de clientes, pedidos con varios productos, actualización de stock y estadísticas del dashboard.
+
+1. Haz una copia de seguridad de tu carpeta actual y exporta tu base de datos MySQL desde phpMyAdmin.
+2. Extrae este ZIP en una carpeta nueva; no sobrescribas directamente tu instalación activa.
+3. Copia tu .env original a la nueva carpeta (no se incluye por seguridad).
+4. En PowerShell, dentro de la carpeta cloudbiz: composer install
+5. Ejecuta: npm install
+6. Ejecuta: npm run build
+7. Ejecuta: php artisan optimize:clear
+8. Ejecuta: php artisan storage:link (si no existe ya el enlace)
+9. Ejecuta: php artisan serve
+10. Abre /dashboard, /clientes y /pedidos. Usa tu base de datos MySQL original.
+
+No importes el archivo database/cloudbiz_backup.sql sobre una base que ya contiene tus datos.
+No ejecutes migrate:fresh, porque elimina tablas y datos.
+El dashboard calcula ventas únicamente a partir de pedidos completados.
+Los pedidos descuentan inventario al crearse y lo restituyen al cancelarse.
+No se ha podido probar esta versión con tu servidor MySQL real: realiza pruebas locales antes de producción.

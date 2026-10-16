@@ -1,0 +1,20 @@
+CLOUDBIZ MYPES PERÚ — DESPLIEGUE SEGURO EN CPANEL
+=================================================
+IMPORTANTE: este paquete no contiene datos reales ni credenciales. No borres el sitio anterior sin respaldo.
+
+1. Haz copia de seguridad de la base de datos actual y de public_html/cloudbiz y del proyecto Laravel anterior.
+2. Descomprime este ZIP en tu equipo. Contiene cloudbiz/ (Laravel) y CARPETA_PUBLICA_CPANEL.zip.
+3. Coloca cloudbiz/ FUERA de public_html, por ejemplo /home/TU_USUARIO/cloudbiz_app. Copia el CONTENIDO de cloudbiz/ a cloudbiz_app, no la carpeta anidada.
+4. Descomprime CARPETA_PUBLICA_CPANEL.zip y coloca su CONTENIDO en public_html/cloudbiz. Incluye index.php, .htaccess, build/ e images/.
+5. Edita public_html/cloudbiz/index.php: cambia las 3 referencias a ../storage, ../vendor y ../bootstrap por rutas ABSOLUTAS de cloudbiz_app (consulta los comentarios en el archivo de ejemplo INDEX_CPANEL_EJEMPLO.php.txt).
+6. En cloudbiz_app crea .env desde .env.example y configura APP_KEY, APP_ENV=production, APP_DEBUG=false, APP_URL=https://abrilp.com/cloudbiz, ASSET_URL=https://abrilp.com/cloudbiz, SESSION_SECURE_COOKIE=true, SESSION_PATH=/cloudbiz y credenciales DB_*. No subas contraseñas al chat.
+7. Comprueba que PHP de hosting tenga extensiones mbstring, openssl, pdo_mysql, fileinfo y otras requeridas por Composer. Usa PHP 8.3+ compatible.
+8. Si la base de datos es NUEVA: php artisan migrate --force. Si reutilizas tu DB actual, revisa primero migraciones y haz respaldo; NO ejecutes migrate:fresh.
+9. Ejecuta php artisan optimize:clear; php artisan storage:link (o crea enlace manual de public_html/cloudbiz/storage a cloudbiz_app/storage/app/public).
+10. Prueba /cloudbiz/login, /cloudbiz/dashboard, productos, categorías, clientes, pedidos y /cloudbiz/tienda/SLUG. Actualiza navegador con Ctrl+Shift+R.
+
+NOTAS:
+- Se incluye build compilado; NO necesitas npm run build en cPanel.
+- Para subir fotografías propias usa Productos; se incluye imagen SVG de ejemplo.
+- Este paquete se validó mediante comprobaciones estáticas y rutas; NO se ha ejecutado una prueba de extremo a extremo contra tu base de datos/hosting.
+- Si el sitio queda en blanco, revisa storage/logs/laravel.log, permisos de storage y bootstrap/cache y la versión PHP.

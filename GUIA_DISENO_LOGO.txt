@@ -1,0 +1,19 @@
+CLOUDBIZ - DISEÑO Y LOGOTIPO
+
+1. Abre la carpeta cloudbiz en Visual Studio Code.
+2. Los archivos modificados son:
+   resources/views/layouts/app.blade.php (menú, barra superior, formulario para logo)
+   resources/views/shop/show.blade.php (logo en tienda)
+   resources/css/app.css (estilos y diseño responsive)
+   routes/web.php (ruta de carga)
+   app/Http/Controllers/BusinessBrandingController.php (validación y almacenamiento)
+3. Comprueba que .env contiene FILESYSTEM_DISK=public y DB configurada.
+4. Ejecuta: php artisan storage:link
+5. Ejecuta: npm install && npm run build
+6. Ejecuta: php artisan optimize:clear
+7. Ejecuta: php artisan serve
+8. Abre el panel. Al final de cada página aparece 'Identidad de tu empresa'.
+9. Selecciona logo JPG, PNG o WEBP hasta 2 MB y pulsa 'Guardar logotipo'.
+10. El logo se guarda en storage/app/public/logos y se muestra mediante public/storage.
+
+ANTES DE SUBIR AL HOSTING: hacer copia de seguridad. Nunca copiar .env local a producción.
